@@ -13,3 +13,6 @@ jobs:
                        uses: actions/setup-node@v4
                        with:
                             node-version: '21'
+
+                     - name: "check Node.js version"
+                       run: node --version
