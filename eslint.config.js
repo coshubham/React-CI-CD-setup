@@ -16,7 +16,9 @@ export default [
         sourceType: 'module',
       },
     },
+    extends: ["plugin:jest/recommended"],
     plugins: {
+      jest,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
