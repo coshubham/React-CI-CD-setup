@@ -1,14 +1,14 @@
-name: "sample React CI Pipeline / workflow"
+name: "sample React CI Pipeline / workflow" # name of the workflow/ pipeline
 
-on:
-       push:
+on: # Trigger the workflow on push to the main branch
+       push:        # Trigger on push events
               branches:
-                     - main
-jobs: 
-       build-and-test:
+                     - main              # Branch to trigger the workflow
+jobs:      # Define the jobs in the workflow
+       build-and-test:            # Build and test job in ci we use this job to build and test the application
               runs-on: ubuntu-latest
 
-              steps:
+              steps:            # Define the steps in the job
                      - name: "setup node js"
                        uses: actions/setup-node@v4
                        with:
@@ -17,7 +17,7 @@ jobs:
                      - name: "check Node.js version"
                        run: node --version
 
-                     - name: "Clone the repository"
+                     - name: "Clone the repository"       # Clone the repository
                        uses: actions/checkout@v4
                      - name: "list directory"
                        run: ls 
@@ -27,17 +27,17 @@ jobs:
                      - name: "list directory"
                        run: ls 
 
-                     - name: "run lint"
+                     - name: "run lint"      # Run linting to check code quality
                        run: npm run lint
 
-                     - name: "Run tests"
+                     - name: "Run tests"        # Run tests to ensure code correctness
                        run: npm test
 
                      - name: "Run build"
                        run: npm run build
 
-                     - name: "Upload product-ready build files"
+                     - name: "Upload product-ready build files"     # Upload the build files as an artifact
                        uses: actions/upload-artifact@v4
                        with:
-                            name: bulid
-                            path: dist
+                            name: bulid        # Name of the artifact
+                            path: dist # Path to the build files

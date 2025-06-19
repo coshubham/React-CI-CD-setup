@@ -1,31 +1,32 @@
-name: "CD Pipeline / workflow"
+name: "CD Pipeline / workflow"  # name of the workflow/ pipeline
 
 on:
        workflow_run:
-              workflows: ["sample React CI Pipeline / workflow"]
+              workflows: ["sample React CI Pipeline / workflow"]  #CI workflow name
+              # This workflow will run when the CI workflow is completed
               types:
                      - completed
 jobs:
-       deploy:
+       deploy: # Deploy job
               runs-on: ubuntu-latest
-              environment: production
+              environment: production # Environment name you want to deploy to github
 
               steps:
-                     - name: "setup node js"
+                     - name: "setup node js" # Setup Node.js environment
                        uses: actions/setup-node@v4
                        with:
                          node-version: '21'
 
-                     - name: "SetUp Vercel CLI"
+                     - name: "SetUp Vercel CLI"  # Install Vercel CLI
                        run: npm i -g vercel
 
-                     - name: "Download build files"
+                     - name: "Download build files"   # Download the build files from the CI workflow
                        uses: actions/download-artifact@v4
                        with:
-                            name: bulid
-                            run-id: ${{ github.event.workflow_run.id }}
-                            github-token: ${{ secrets.GITHUB_TOKEN }}
+                            name: bulid         # Name of the artifact uploaded in CI workflow
+                            run-id: ${{ github.event.workflow_run.id }} # ID of the workflow run that triggered this workflow
+                            github-token: ${{ secrets.GITHUB_TOKEN }}   # GitHub token to access the artifact
 
-                     - name: "Deploy to Vercel"
-                       run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm --name=cicdproject
+                     - name: "Deploy to Vercel"   # Deploy the application to Vercel
+                       run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm --name=cicdproject  # Vercel project name
 
