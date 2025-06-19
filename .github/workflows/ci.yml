@@ -27,6 +27,9 @@ jobs:
                      - name: "list directory"
                        run: ls 
 
+                     - name: "run lint"
+                       run: mpm run lint
+
                      - name: "Run tests"
                        run: npm test
 
