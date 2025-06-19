@@ -28,7 +28,7 @@ jobs:
                        run: ls 
 
                      - name: "run lint"
-                       run: mpm run lint
+                       run: npm run lint
 
                      - name: "Run tests"
                        run: npm test
