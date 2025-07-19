@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'node:18-alpine' // Use Node.js 18 Alpine image
+                    image 'node:22.11.0-alpine3.20' // Use a specific Node.js Docker image
+                    args '-u root' // Run as root user to avoid permission issues
                     reuseNode true // Reuse the same node for the build
                 }
             }
