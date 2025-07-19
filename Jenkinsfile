@@ -5,7 +5,7 @@ pipeline {
         stage('Clean Workspace') {
             steps {
                 cleanWs()
-                checkout scm
+                checkout scm  // Checkout the source code from the SCM and clean the workspace before building 
             }
         }
 
