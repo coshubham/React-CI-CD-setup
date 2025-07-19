@@ -2,10 +2,27 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Build') {
+            agent {
+                docker {
+                    image 'node:18-alpine' // Use Node.js 18 Alpine image
+                    reuseNode true // Reuse the same node for the build
+                }
+            }
             steps {
-                echo 'Welcome to Jenkins World With AWS!'
+              sh '''
+              
+              ls -l
+              node --version
+              npm --version
+              npm insatll
+              npm run build
+              ls -l
+              
+              '''
             }
         }
+        
+        }
     }
-}
+
