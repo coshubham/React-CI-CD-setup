@@ -40,7 +40,7 @@ pipeline {
             steps {
                 sh '''
                 npm test
-                test -f dist/index.html
+                test -f dist/index.html  //  check the file is there or not Ensure the build output exists
                 '''
             }
         }
