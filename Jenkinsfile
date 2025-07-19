@@ -2,33 +2,31 @@ pipeline {
     agent any
 
     stages {
-        stage ('clean worksacpe'){
+        stage('Clean Workspace') {
             steps {
-                cleanWs() // Clean the workspace before starting the build
+                cleanWs()
+                checkout scm
             }
         }
 
         stage('Build') {
             agent {
                 docker {
-                    image 'node:22.11.0-alpine3.20' // Use a specific Node.js Docker image
-                    args '-u root' // Run as root user to avoid permission issues
-                    reuseNode true // Reuse the same node for the build
+                    image 'node:22.11.0-alpine3.20'
+                    args '-u root'
+                    reuseNode true
                 }
             }
             steps {
-              sh '''
-              
-              ls -l
-              node --version
-              npm --version
-              npm install
-              npm run build
-              ls -l
-              
-              '''
+                sh '''
+                ls -l
+                node --version
+                npm --version
+                npm install
+                npm run build
+                ls -l
+                '''
             }
         }
     }
 }
-
