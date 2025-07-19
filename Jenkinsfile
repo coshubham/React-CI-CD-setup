@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage ('clean worksacpe'){
+            steps {
+                cleanWs() // Clean the workspace before starting the build
+            }
+        }
+
         stage('Build') {
             agent {
                 docker {
@@ -11,17 +17,18 @@ pipeline {
                 }
             }
             steps {
-                cleanWs()
-
-                sh '''
-                ls -l
-                node --version
-                npm --version
-                npm install
-                npm run build
-                ls -l
-                '''
+              sh '''
+              
+              ls -l
+              node --version
+              npm --version
+              npm install
+              npm run build
+              ls -l
+              
+              '''
             }
         }
     }
 }
+
