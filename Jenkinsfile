@@ -16,7 +16,7 @@ pipeline {
               ls -l
               node --version
               npm --version
-              npm insatll
+              npm install
               npm run build
               ls -l
               
