@@ -11,6 +11,11 @@ pipeline {
                 }
             }
             steps {
+                step ('clean workspace') {
+                    cleanWs()
+                }
+
+                step ('bulid project'){
               sh '''
               
               ls -l
@@ -26,4 +31,5 @@ pipeline {
         
         }
     }
+}
 
