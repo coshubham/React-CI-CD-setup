@@ -10,13 +10,13 @@ pipeline {
         }
 
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:22.11.0-alpine3.20'
-                    args '-u root'
-                    reuseNode true
-                }
-            }
+            // agent {
+            //     docker {
+            //         image 'node:22.11.0-alpine3.20'
+            //         args '-u root'
+            //         reuseNode true
+            //     }
+            // }
             steps {
                 sh '''
                 ls -l
@@ -30,13 +30,13 @@ pipeline {
         }
 
         stage('Test') {
-            agent {
-                docker {
-                    image 'node:22.11.0-alpine3.20'
-                    args '-u root'
-                    reuseNode true
-                }
-            }
+            // agent {
+            //     docker {
+            //         image 'node:22.11.0-alpine3.20'
+            //         args '-u root'
+            //         reuseNode true
+            //     }
+            // }
             steps {
                 sh '''
                 npm test
