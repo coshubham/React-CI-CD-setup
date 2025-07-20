@@ -39,8 +39,8 @@ pipeline {
             // }
             steps {
                 bat '''
-                npx npm test
-                '''
+                 npx vitest                
+                 '''
             }
         }
     }
