@@ -18,7 +18,7 @@ pipeline {
             //     }
             // }
             steps {
-                sh '''
+                bat '''
                 ls -l
                 node --version
                 npm --version
@@ -38,9 +38,8 @@ pipeline {
             //     }
             // }
             steps {
-                sh '''
+                bat '''
                 npm test
-                test -f dist/index.html  //  check the file is there or not Ensure the build output exists
                 '''
             }
         }
