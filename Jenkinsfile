@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        deploy = 'Deploy to Vercel'
+        VERCEL_TOKEN = credentials('VERCEL_TOKEN') // Ensure you have a Vercel token stored in Jenkins credentials
+    }
 
     stages {
         stage('Clean Workspace') {
@@ -55,6 +59,8 @@ pipeline {
             steps {
                 sh '''
                 npm install -g vercel
+                echo $deploy
+                vercel --prod --token=$VERCEL_TOKEN --confirm --name=cicdproject
                 '''
             }
             
