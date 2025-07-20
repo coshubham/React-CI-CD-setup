@@ -23,6 +23,7 @@ pipeline {
                 node --version
                 npm --version
                 npm install
+                npm install --save-dev vite @vitejs/plugin-react
                 npm run build
                 dir
                 '''
@@ -39,7 +40,7 @@ pipeline {
             // }
             steps {
                 bat '''
-                 npx vitest                
+                 npx vitest run            
                  '''
             }
         }
