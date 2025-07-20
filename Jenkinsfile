@@ -18,13 +18,13 @@ pipeline {
                 }
             }
             steps {
-                bat '''
-                dir
+                sh '''
+                ls -l
                 node --version
                 npm --version
                 npm install
                 npm run build
-                dir
+                ls -l
                 '''
             }
         }
@@ -38,7 +38,7 @@ pipeline {
                 }
             }
             steps {
-                bat '''
+                sh '''
                 npm test
                 '''
             }
