@@ -20,7 +20,7 @@ pipeline {
                 node --version
                 npm --version
                 npm install
-               npm install --save-dev vite
+                npm install --save-dev vite
                 vitest --version
                 npm run build
                 dir
