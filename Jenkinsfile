@@ -31,7 +31,7 @@ pipeline {
         stage('Test') {
             steps {
                 bat '''
-                npx vitest
+                npx vitest run
                 '''
             }
         }
