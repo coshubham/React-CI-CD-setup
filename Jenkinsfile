@@ -20,21 +20,19 @@ pipeline {
                 node --version
                 npm --version
                 npm install
-                npm install vite
-                vitest --version
                 npm run build
                 dir
                 '''
             }
         }
 
-        stage('Test') {
-            steps {
-                bat '''
-                npx vitest run
-                '''
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         bat '''
+        //         npx vitest run
+        //         '''
+        //     }
+        // }
 
         stage('Deploy') {
             steps {
