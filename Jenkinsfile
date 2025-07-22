@@ -38,8 +38,8 @@ pipeline {
             steps {
                 bat '''
                 npm install -g vercel
-                echo %deploy%
-                vercel --prod --token=%VERCEL_TOKEN% --confirm --name=cicdproject
+                echo $deploy
+                 vercel --prod --token=$VERCEL_TOKEN --confirm --name=cicdproject
                 '''
             }
         }
